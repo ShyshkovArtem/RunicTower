@@ -1,0 +1,445 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1288415117890821409
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2527866601260206687}
+  - component: {fileID: 5494341545492940597}
+  m_Layer: 0
+  m_Name: BattleRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2527866601260206687
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288415117890821409}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2284085891813729896}
+  - {fileID: 6978690401949583637}
+  - {fileID: 1049129875488369663}
+  - {fileID: 6187338243382478533}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5494341545492940597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288415117890821409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1fe773a54530604da53c5468be64e3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RunicTower.Presentation3D.BattleBoard3DController
+  battleController: {fileID: 5130083132370719262}
+  playerPanel: {fileID: 0}
+  enemyPanel: {fileID: 0}
+  previewPanel: {fileID: 0}
+  roundLabel: {fileID: 0}
+  previewButton: {fileID: 0}
+  castButton: {fileID: 0}
+  ritualPreviewBook: {fileID: 0}
+  audioController: {fileID: 0}
+  ritualVfxController: {fileID: 8869557595487620473}
+  playerMageRoot: {fileID: 0}
+  enemyMageRoot: {fileID: 0}
+  interactionCamera: {fileID: 0}
+  interactionLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  cardRoot: {fileID: 0}
+  runeCardPrefab: {fileID: 7715601234513772403, guid: 78c7f6a7bd5c8314d936dc21eaf939fb, type: 3}
+  playerHandElementSpots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  playerModifierSpot: {fileID: 0}
+  enemyHandElementSpots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  enemyModifierSpot: {fileID: 0}
+  ritualPedestal: {fileID: 0}
+  cardHandScale: {x: 0.8, y: 0.8, z: 0.8}
+  cardRitualScale: {x: 0.5, y: 0.5, z: 0.5}
+  modifierRitualScale: {x: 0.35, y: 0.35, z: 0.35}
+  playCardIdleInHand: 1
+  cardIdlePositionAmplitude: {x: 0.08, y: 0.05, z: 0.1}
+  cardIdleRotationAmplitude: {x: 4, y: 5, z: 4}
+  cardIdlePositionFrequency: 1.15
+  cardIdleRotationFrequency: 1.45
+  cardMoveDuration: 1.7
+  flightArcHeight: 2
+  liftPhaseRatio: 0.2
+  landPhaseRatio: 0.05
+  playerCastWindupDuration: 0.8
+  enemyCastWindupDuration: 0.8
+  postCastBeforeDamageDelay: 0.5
+  damageReactionDuration: 0.75
+  repeatedDamageReactionDelay: 0.95
+  postDamageDelay: 0.2
+  turnHandoffDelay: 1
+  enemyRunePlacementStepDelay: 0.16
+  autoStartBattle: 1
+  allowRoundLabelDoubleTapRestart: 1
+  restartDoubleTapWindow: 0.35
+  debugFlightLogs: 0
+  debugRitualPresentationLogs: 1
+  driveEnemyTurnAnimations: 1
+--- !u!1 &1511841763481866593
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6187338243382478533}
+  - component: {fileID: 8869557595487620473}
+  m_Layer: 0
+  m_Name: BT_VFXController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6187338243382478533
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511841763481866593}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2527866601260206687}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8869557595487620473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511841763481866593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 923d05c6ae2f23f45b2bddfda3c0f4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RunicTower.Presentation3D.RitualVfxController
+  runeLightPrefab: {fileID: 8116241941871119674, guid: ec397e4abd237d04fa465afcac55d818, type: 3}
+  runeLightOffset: {x: 0, y: 0.03, z: 0}
+  parentRuneLightsToSpots: 1
+  magicCirclePrefab: {fileID: 7868217223950723599, guid: 2f3eb05cd333c0c42a307f76b5a43408, type: 3}
+  magicCircleAnchor: {fileID: 0}
+  magicCircleOffset: {x: 0, y: 0, z: 0}
+  magicCircleRotationEuler: {x: 0, y: 0, z: 0}
+  magicCircleLifetime: 1.2
+  parentMagicCircleToAnchor: 1
+  failureVfxPrefab: {fileID: 4809171458859421548, guid: 4e91ed1a8efe7044785b9bd97a47d87f, type: 3}
+  failureSfxKey: sfx_SmokePuff
+  failureVfxOffset: {x: 0, y: 1, z: 0}
+  failureVfxRotationEuler: {x: 0, y: 0, z: 0}
+  failureVfxLifetime: 1.2
+  parentFailureVfxToAnchor: 0
+  keyedVfxPrefabs:
+  - key: vfx_sFireball
+    prefab: {fileID: 4585222758978039214, guid: 485906f8e6e9706438bfa5f7894e0469, type: 3}
+    holdBeforeTravel: 0.7
+    rotateOnEnemyCast: 1
+    projectileRotationEuler: {x: 0, y: 0, z: 0}
+  - key: vfx_Fireball
+    prefab: {fileID: 7473071684311227279, guid: 74e2ee5b1c5a92e4d8cd6eb8a3f37bc5, type: 3}
+    holdBeforeTravel: 0.7
+    rotateOnEnemyCast: 1
+    projectileRotationEuler: {x: 0, y: 0, z: 0}
+  - key: vfx_bFireball
+    prefab: {fileID: 8715532438149207615, guid: 5be9024bd74e08f468015dba63d1d373, type: 3}
+    holdBeforeTravel: 0.7
+    rotateOnEnemyCast: 1
+    projectileRotationEuler: {x: 0, y: 0, z: 0}
+  - key: vfx_FireRain
+    prefab: {fileID: 1634357199405280289, guid: 906acf85b715c644ca99fffabb332164, type: 3}
+    holdBeforeTravel: 0.6
+    rotateOnEnemyCast: 0
+    projectileRotationEuler: {x: 0, y: 0, z: 0}
+  - key: vfx_sFlameBlade
+    prefab: {fileID: 628646490914615193, guid: 4904c122a393a70408ebf18eb4b3d644, type: 3}
+    holdBeforeTravel: 0.7
+    rotateOnEnemyCast: 1
+    projectileRotationEuler: {x: 90, y: 0, z: 0}
+  - key: vfx_FlameBlade
+    prefab: {fileID: 628646490914615193, guid: 569bbf40b22d8ae40ac020f42134d2c7, type: 3}
+    holdBeforeTravel: 0.7
+    rotateOnEnemyCast: 1
+    projectileRotationEuler: {x: 90, y: 0, z: 0}
+  - key: vfx_sFireBurst
+    prefab: {fileID: 1567527742426904764, guid: 1aab92d0c1c4781469020fc26944b074, type: 3}
+    holdBeforeTravel: 0.6
+    rotateOnEnemyCast: 0
+    projectileRotationEuler: {x: 90, y: 0, z: 0}
+  - key: vfx_FireBurst
+    prefab: {fileID: 4031692595625811219, guid: 3df1f00b6fbd9ae498727e5a0f0e540b, type: 3}
+    holdBeforeTravel: 0.6
+    rotateOnEnemyCast: 0
+    projectileRotationEuler: {x: 90, y: 0, z: 0}
+  tableVfxStartDelay: 0.2
+  detachProjectileAfterTravel: 1
+  magicCircleTableVfxSpawnOffset: {x: 0, y: 1, z: 0}
+  characterVfxOffset: {x: 0, y: 1, z: -0.8}
+  groundVfxOffset: {x: 0, y: 0, z: 0}
+  debugTableVfxLogs: 1
+  debugTestVfxKey: vfx_FlameBlade
+  debugTestTarget: 1
+--- !u!1 &4590999992060680467
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6978690401949583637}
+  - component: {fileID: 3354742262616405267}
+  m_Layer: 0
+  m_Name: BT_ConsoleLogger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6978690401949583637
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4590999992060680467}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2527866601260206687}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3354742262616405267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4590999992060680467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c02e310c3ef7834097308fe0548a5e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RunicTower.Debugging.BattleConsoleLogger
+  battleController: {fileID: 5130083132370719262}
+  loggingEnabled: 1
+  logControllerMessages: 1
+  logRitualResults: 0
+  logBattleStateSnapshots: 1
+  logHandsInSnapshots: 0
+--- !u!1 &7386452866927342811
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1049129875488369663}
+  - component: {fileID: 5102290017474078162}
+  m_Layer: 0
+  m_Name: BT_AudioController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1049129875488369663
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7386452866927342811}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2527866601260206687}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5102290017474078162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7386452866927342811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e357c4e2b125ba44990b6e054fa3029, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RunicTower.Audio.BattleAudioController
+  musicSource: {fileID: 0}
+  sfxVoiceCount: 6
+  playMusicOnEnable: 1
+  backgroundMusic:
+    clips:
+    - {fileID: 8300000, guid: 5ff987a1a2631d6499f68826de89a715, type: 3}
+    volume: 0.15
+    pitchRange: {x: 0.8, y: 0.8}
+  runeFlyCue:
+    clips:
+    - {fileID: 8300000, guid: fb7edfc61cd0cde458d71e862ff8eaaf, type: 3}
+    volume: 0.1
+    pitchRange: {x: 1, y: 1}
+  runePlaceCue:
+    clips:
+    - {fileID: 8300000, guid: 0783870ae7763f844809dcb96a30ac42, type: 3}
+    volume: 0.1
+    pitchRange: {x: 1, y: 1}
+  ritualCastCue:
+    clips: []
+    volume: 1
+    pitchRange: {x: 1, y: 1}
+  damageCue:
+    clips:
+    - {fileID: 8300000, guid: 59ce9af8ae0225b4e97865d0efffbb1f, type: 3}
+    volume: 0.1
+    pitchRange: {x: 1, y: 1}
+  bookFlightCue:
+    clips:
+    - {fileID: 8300000, guid: 299d115b2f58c1b40870b236e81599fc, type: 3}
+    volume: 0.15
+    pitchRange: {x: 1, y: 1}
+  bookOpenCue:
+    clips: []
+    volume: 1
+    pitchRange: {x: 1, y: 1}
+  bookFlipCue:
+    clips:
+    - {fileID: 8300000, guid: fbc75b22192885f4a9fea51a201c5ec1, type: 3}
+    volume: 0.07
+    pitchRange: {x: 1, y: 1}
+  bookCloseCue:
+    clips:
+    - {fileID: 8300000, guid: fbc75b22192885f4a9fea51a201c5ec1, type: 3}
+    volume: 0.07
+    pitchRange: {x: 1, y: 1}
+  keyedSfxCues:
+  - key: sfx_Fireball
+    additionalKeys:
+    - sfx_sFireball
+    - sfx_bFireball
+    cue:
+      clips:
+      - {fileID: 8300000, guid: 5757a152e5e5f8f45a5617e69f958eb1, type: 3}
+      volume: 0.3
+      pitchRange: {x: 0.8, y: 0.8}
+  - key: sfx_FlameBlade
+    additionalKeys:
+    - sfx_sFlameBlade
+    cue:
+      clips:
+      - {fileID: 8300000, guid: 62a918007b2964542870fbfb58248106, type: 3}
+      volume: 0.3
+      pitchRange: {x: 1.2, y: 1.2}
+  - key: sfx_FireBurst
+    additionalKeys:
+    - sfx_sFireBurst
+    cue:
+      clips:
+      - {fileID: 8300000, guid: aef64a23daa45b94fadae6e39c2f499a, type: 3}
+      volume: 0.15
+      pitchRange: {x: 0.8, y: 0.8}
+  - key: sfx_SmokePuff
+    additionalKeys: []
+    cue:
+      clips:
+      - {fileID: 8300000, guid: f455241faf2b90b42b969976d0d9f233, type: 3}
+      volume: 0.5
+      pitchRange: {x: 1, y: 1}
+--- !u!1 &8654976458657884373
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2284085891813729896}
+  - component: {fileID: 5130083132370719262}
+  m_Layer: 0
+  m_Name: BT_FlowController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2284085891813729896
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8654976458657884373}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2527866601260206687}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5130083132370719262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8654976458657884373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdaba5da280b2b94b8cd39ce2e7fb278, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RunicTower.Combat.BattleFlowController
+  playerDeckDefinitions:
+  - {fileID: 11400000, guid: 8fa4fe3c5147af44889ad18cf75d7556, type: 2}
+  - {fileID: 11400000, guid: 6aca56eaffe21c9419bb38cac955a94a, type: 2}
+  - {fileID: 11400000, guid: cc73e8700037a4d4981097d9a2d17516, type: 2}
+  availableModifiers:
+  - {fileID: 11400000, guid: b363f4f50c06a404e962344753f8cd7b, type: 2}
+  playerMaxHp: 50
+  playerMaxMana: 6
+  playerManaRegen: 2
+  enemyDefinition: {fileID: 11400000, guid: 980dd983aeae4184998b17a48d48dccf, type: 2}
+  autoResolveEnemyTurn: 1

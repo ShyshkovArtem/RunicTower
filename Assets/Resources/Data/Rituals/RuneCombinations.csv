@@ -1,0 +1,101 @@
+﻿;;"Table rules and meanings:
+Damage = do damage to the opponent
+Heal = restore caster HP
+Shield = add temporary ""HP"" to caster
+Caster Damage buff = increases caster's damage
+Enemy Damage debuff = decrease opponent's outgoing damage
+Break = increases incoming opponent's damage
+1. Runes order doesn't matter
+2. If VFX Target Location empty, play it on Spawn Location
+3. Travel Time = Time of VFX life
+4. All effect applied to enemy always lasts for 2 rounds if not updated with stuck
+5. Shield effect lasts for 3 rounds if not apdated with stuck
+6. If ritual contains extra rune, ritual can not be casted as formula is not observed
+7. If ritual consist of rune line that is not described in the table ritual can not be casted (the important thing here is the runes' size and elements, not their order)
+";;;;;;;"Ritual and runes rules:
+1. Ritual can contain up to 3 elemental runes.
+2. Player can only use runes that they currently have in hand.
+3. Ritual is invalid if mana cost is higher than current player'smana
+4. Mana cost is sum of rune costs
+5. Invalid rituals show 0% success and can not be casted
+6. Heal/regeneration resolves first
+7. Shield resolves after healing
+8. Damage resolves after shield
+9. Burn deals damage at the end of the affected unit’s turn. Burn lasts 2 turns. Reapplying Burn refreshes duration, but does not stack infinitely. Max Burn intensity: 5
+10. Same element shields effect could be stucked, each time effect is applied increase time of the effect by 1 round. If caster has a shield and apply new one with different element old one disapears and replaced with new one.
+11. Healing overflow disappear, player can be healed only to max HP
+12. Burn effect text displays how many damage target will recive
+13. If there is a burn effect on the character and it receives wind barrier this increase time of burn effect by one round
+14. If there is a burn effect on the character and it receives water-kind barrier this burn effect disappears
+15. Burn effect can not be added to enemy who has active water berrier
+16. Break effect can not go over 50%. Break lasts until the target receives one damaging spell, or for 2 turns if effect is not updated.
+17. Enemy damage debuff can not go over 50%.";;;;;Main design rule: Different-element combinations should be beneficial through +~10% value, extra flexibility, or a secondary effect.;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+;Mana;R1 Element;R1 Size;R2 Element;R2 Size;R3 Element;R3 Size;Comb. Rule;Disp. Name;Effect Type;Effect Value;Effect2 Type;Effect2 Value;Target;VFX Key;VFX Spawn Location;VFX Target Location;VFX Travel Time;SFX Key;Notes;;;;;;
+;1;Fire;Small;;;;;Exact;Small Flame Blade;Damage;2;;;Enemy;vfx_sFlameBlade;MagicalCircle;Enemy;0,6;sfx_SFlameBlade;;;Fire;Small;Damage;Player;Player
+;2;Fire;Small;Fire;Small;;;Exact;Small Fireball;Damage;5;;;Enemy;vfx_sFireball;MagicalCircle;Enemy;0,6;sfx_sFireball;;;Air;Medium;Heal;Enemy;Enemy
+;3;Fire;Small;Fire;Small;Fire;Small;Exact;Small Fire Burst;Damage;7;Burn;1;Enemy;vfx_sFireBurst;Enemy;;1,5;sfx_sFireBurst;;;Water;Large;Shield;Both;MagicalCircle
+;2;Fire;Medium;;;;;Exact;Flame Blade;Damage;6;;;Enemy;vfx_FlameBlade;MagicalCircle;Enemy;0,6;sfx_FlameBlade;;;Earth;;Burn;;
+;4;Fire;Medium;Fire;Medium;;;Exact;Fireball;Damage;14;;;Enemy;vfx_Fireball;MagicalCircle;Enemy;0,6;sfx_Fireball;;;;;Debuff Enemy Damage;;
+;6;Fire;Medium;Fire;Medium;Fire;Medium;Exact;Fire Burst;Damage;20;Burn;2;Enemy;vfx_FireBurst;Enemy;;1,5;sfx_FireBurst;;;;;Buff Caster Damage;;
+;3;Fire;Large;;;;;Exact;Big Fireball;Damage;10;;;Enemy;vfx_bFireball;MagicalCircle;Enemy;0,6;sfx_bFireball;;;;;Break;;
+;6;Fire;Large;Fire;Large;;;Exact; Fire Rain;Damage;30;Burn;3;Enemy;vfx_FireRain;Enemy;;2,5;sfx_FireRain;;;;;Debuff Caster Damage;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+;1;Air;Small;;;;;Exact;Small Air Impact;Damage;1;;;Enemy;vfx_sAirImpact;MagicalCircle;Enemy;0,6;sfx_sAirImpact;;;;;;;
+;2;Air;Small;Air;Small;;;Exact;Small Air Barrier;Shield;3;;;Player;vfx_sAirBarrier;Player;Player;2,0;sfx_sAirBarrier;While active on caster continue burn effect on caster;;;;;;
+;3;Air;Small;Air;Small;Air;Small;Exact;Small Air Blade;Damage;6;;;Enemy;vfx_sAirBlade;MagicalCircle;Enemy;0,6;sfx_sAirBlade;;;;;;;
+;2;Air;Medium;;;;;Exact;Air Impact;Damage;5;;;Enemy;vfx_AirImpact;MagicalCircle;Enemy;0,6;sfx_AirImpact;;;;;;;
+;4;Air;Medium;Air;Medium;;;Exact;Air Barrier;Shield;12;;;Player;vfx_AirBarrier;Player;Player;2,0;sfx_AirBarrier;While active on caster continue burn effect on caster;;;;;;
+;6;Air;Medium;Air;Medium;Air;Medium;Exact;Air Blade;Damage;18;;;Enemy;vfx_AirBlade;MagicalCircle;Enemy;0,6;sfx_AirBlade;;;;;;;
+;3;Air;Large;;;;;Exact;Air Strike;Damage;8;;;Enemy;vfx_AirStrike;Enemy;Enemy;0,6;sfx_AirStrike;;;;;;;
+;6;Air;Large;Air;Large;;;Exact;Multiple Air Blades;Damage;24;;;Enemy;vfx_multiAirBlade;MagicalCircle;Enemy;0,6;sfx_multiAirBlade;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+;2;Fire;Small;Air;Small;;;Exact;Double Small Flame Blade;Damage;4;Burn;1;Enemy;vfx_dsFlameBlade;MagicalCircle;Enemy;0,6;sfx_dsFlameBlade;;;;;;;
+;4;Fire;Medium;Air;Medium;;;Exact;Double Flame Blade;Damage;13;Burn;2;Enemy;vfx_dFlameBlade;MagicalCircle;Enemy;0,6;sfx_dFlameBlade;;;;;;;
+;4;Fire;Medium;Air;Small;Air;Small;Exact;Triple Fireball;Damage;15;Burn;2;Enemy;vfx_tFireball;MagicalCircle;Enemy;0,6;sfx_tFireball;;;;;;;
+;4;Air;Medium;Fire;Small;Fire;Small;Exact;Flame Barrier;Shield;18;Buff Caster Damage;10%;Player;vfx_FlameBarrier;Player;;0,6;sfx_FlameBarrier;Clear break effect. Buff outgoing fire and wind damage by 10% and debuff water and ice damage by 10%;;;;;;
+;5;Fire;Large;Air;Medium;;;Exact;Giant Fireball;Damage;25;Burn;3;Enemy;vfx_gFireball;MagicalCircle;Enemy;0,6;sfx_gFireball;;;;;;;
+;5;Air;Large;Fire;Medium;;;Exact;Flame Strike;Damage;24;Burn;3;Enemy;vfx_FlameStrike;Enemy;Enemy;0,6;;;;;;;;
+;6;Fire;Large;Air;Large;;;Exact;Hellwind;Damage;32;Burn;4;Enemy;vfx_Hellwind;Enemy;;2,5;sfx_Hellwind;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+;1;Water;Small;;;;;Exact;Small Water Bullet;Damage;2;;;Enemy;vfx_sWaterBullet;MagicalCircle;Enemy;0,6;;;;;;;;
+;2;Water;Small;Water;Small;;;Exact;Small Water Barrier;Shield;4;;;Player;vfx_sWaterBarrier;Player;;2;;Clear caster from burn effect. Debuff outgoing fire damage by 20%;;;;;;
+;3;Water;Small;Water;Small;Water;Small;Exact;Small Healing;Heal;8;;;Player;vfx_sHealing;Player;;1,5;;;;;;;;
+;2;Water;Medium;;;;;Exact;Water Bullet;Damage;5;;;Enemy;vfx_WaterBullet;MagicalCircle;Enemy;0,6;;;;;;;;
+;4;Water;Medium;Water;Medium;;;Exact;Water Barrier;Shield;11;;;Player;vfx_WaterBarrier;Player;;2;;Clear caster from burn effect. Debuff outgoing fire damage by 20%;;;;;;
+;6;Water;Medium;Water;Medium;Water;Medium;Exact;Medium Healing;Heal;20;;;Player;vfx_MediumHealing;Player;;1,5;;;;;;;;
+;3;Water;Large;;;;;Exact;Multiple Water Bullet;Damage;8;;;Enemy;vfx_multiWaterBullet;MagicalCircle;Enemy;0,6;;;;;;;;
+;6;Water;Large;Water;Large;;;Exact;Water Healing Barrier;Shield;14;Heal;10;Player;vfx_HealingBarrier;Player;;2,0;;Clear caster from burn effect. Debuff outgoing fire damage by 20%;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+;2;Water;Small;Air;Small;;;Exact;Small Ice Bullet;Damage;4;;;Enemy;vfx_sIceBullet;MagicalCircle;Enemy;0,6;;;;;;;;
+;4;Water;Medium;Air;Medium;;;Exact;Ice Bullet;Damage;12;Break;15%;Enemy;vfx_IceBullet;MagicalCircle;Enemy;0,6;;Increase damage that enemy takes for some %;;;;;;
+;4;Water;Medium;Air;Small;Air;Small;Exact;Ice Barrier;Shield;15;;;Player;vfx_IceBarrier;Player;;2;;;;;;;;
+;4;Air;Medium;Water;Small;Water;Small;Exact;Ice Slash;Damage;12;Break;25%;Enemy;vfx_IceSlash;Enemy;;0,6;;Increase damage that enemy takes for some %;;;;;;
+;5;Water;Large;Air;Medium;;;Exact;Greate  Ice Barrier;Shield;20;;;Player;vfx_gIceBarrier;Player;;2;;;;;;;;
+;5;Air;Large;Water;Medium;;;Exact;Icicle;Damage;18;Break;20%;Enemy;vfx_Icicle;Enemy;;0,6;;Increase damage that enemy takes for some %;;;;;;
+;6;Water;Large;Air;Large;;;Exact;Ice Storm;Damage;25;Break;30%;Enemy;vfx_IceStrom;Enemy;;2,5;;Increase damage that enemy takes for some %;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+;1;Earth;Small;;;;;Exact;Small Earth Bullet;Damage;2;;;Enemy;vfx_sEarthBullet;MagicalCircle;Enemy;0,6;;;;;;;;
+;2;Earth;Small;Earth;Small;;;Exact;Small Earth Barrier;Shield;5;;;Player;vfx_sEarthBarrier;Player;;2;;;;;;;;
+;3;Earth;Small;Earth;Small;Earth;Small;Exact;Small Earth Explosion;Damage;7;;;Enemy;vfx_sEarthExplosion;Enemy;;1,5;;;;;;;;
+;2;Earth;Medium;;;;;Exact;Earth Bullet;Damage;5;;;Enemy;vfx_EarthBullet;MagicalCircle;Enemy;0,6;;;;;;;;
+;4;Earth;Medium;Earth;Medium;;;Exact;Earth Barrier;Shield;15;;;Player;vfx_EarthBarrier;Player;;2;;;;;;;;
+;6;Earth;Medium;Earth;Medium;Earth;Medium;Exact;Earth Explosion;Damage;18;;;Enemy;vfx_EarthExplosion;Enemy;;1,5;;;;;;;;
+;3;Earth;Large;;;;;Exact;Small Meteor;Damage;9;;;Enemy;vfx_sMeteor;Enemy;;0,6;;;;;;;;
+;6;Earth;Large;Earth;Large;;;Exact;Greate Earth Barrier;Shield;30;;;Player;vfx_gEarthBarrier;Player;;2;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+;2;Fire;Small;Earth;Small;;;Exact;Small Metal Bullet;Damage;5;;;Enemy;vfx_sMetalBullet;MagicalCircle;Enemy;0,6;;;;;;;;
+;4;Fire;Medium;Earth;Medium;;;Exact;Metal Bullet;Damage;15;;;Enemy;vfx_MetalBullet;MagicalCircle;Enemy;0,6;;;;;;;;
+;4;Earth;Medium;Fire;Small;Fire;Small;Exact;Metal Barrier;Shield;17;;;Player;vfx_MetalBarrier;Player;;2;;;;;;;;
+;4;Fire;Medium;Earth;Small;Earth;Small;Exact;Magma Burst;Damage;16;Burn;1;Enemy;vfx_MagmaBurst;Enemy;;1,5;;;;;;;;
+;5;Earth;Large;Fire;Medium;;;Exact;Magma Barrier;Shield;20;Buff Caster Damage;15%;Player;vfx_MagmaBarrier;Player;;2;;Clear break effect and increase outgoing fire and earth damage by some %;;;;;;
+;5;Fire;Large;Earth;Medium;;;Exact;Magma Explosion;Damage;26;Burn;2;Enemy;vfx_MagmaExplosion;Enemy;;1,5;;;;;;;;
+;6;Fire;Large;Earth;Large;;;Exact;Magma Meteor;Damage;33;Burn;2;Enemy;vfx_MagmaMeteor;Enemy;;0,6;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+;2;Earth;Small;Water;Small;;;Exact;Small Mud Bullet;Damage;4;;;Enemy;vfx_sMudBullet;MagicalCircle;Enemy;0,6;;;;;;;;
+;4;Earth;Medium;Water;Medium;;;Exact;Mud Bullet;Damage;12;;;Enemy;vfx_MudBullet;MagicalCircle;Enemy;0,6;;;;;;;;
+;4;Earth;Medium;Water;Small;Water;Small;Exact;Swamp;Damage;10;Debuff Enemy Damage;20%;Enemy;vfx_Swamp;Enemy;;1,5;;Debuff enemy outgoing ddamage by some %;;;;;;
+;4;Water;Medium;Earth;Small;Earth;Small;Exact;Alive Barrier;Shield;13;Heal;6;Player;vfx_Alive Barrier;Player;;2;;;;;;;;
+;5;Water;Large;Earth;Medium;;;Exact;Multiple Mud Bullet;Damage;20;;;Enemy;vfx_mMudBullet;MagicalCircle;Enemy;0,6;;;;;;;;
+;5;Earth;Large;Water;Medium;;;Exact;Greate Swamp;Damage;16;Debuff Enemy Damage;30%;Enemy;vfx_gSwamp;Enemy;;1,5;;Debuff enemy outgoing ddamage by some %;;;;;;
+;6;Earth;Large;Water;Large;;;Exact;Nature Barrier;Shield;20;Heal;10;Player;vfx_gBarrier;Player;;2;;;;;;;;
